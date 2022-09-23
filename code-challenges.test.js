@@ -14,6 +14,9 @@
 
 // a) Create a test with expect statements for each of the variables provided.
 
+
+
+
 const fibLength1 = 6
 // Expected output: [1, 1, 2, 3, 5, 8]
 
