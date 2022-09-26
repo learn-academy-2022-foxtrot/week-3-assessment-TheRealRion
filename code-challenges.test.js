@@ -1,7 +1,5 @@
 // ASSESSMENT 3: Coding Practical Questions with Jest
 
-const { assertExportAllDeclaration, objectTypeSpreadProperty } = require("@babel/types")
-
 // Please read all questions thoroughly
 // Pseudo coding is REQUIRED
 // If you get stuck, please leave comments to help us understand your thought process
@@ -24,50 +22,49 @@ const { assertExportAllDeclaration, objectTypeSpreadProperty } = require("@babel
 
 // a) Create a test with expect statements for each of the variables provided.
 
-//Template  Red --> Green --> Refactor : 
 
-//describe(fibIndex, () => {
-//    it("takes in a number (greater than 2) and returns an array that length containing the numbers of the Fibonacci sequence.", () => {
-//          const fibLength1 = 6
-//            // Expected output: [1, 1, 2, 3, 5, 8]
-//          const fibLength2 = 10
-//            // Expected output: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
-//      expect(fibIndex(fibLength1)).toEqual([1, 1, 2, 3, 5, 8])
-//      expect(fibIndex(fibLength2)).toEqual([1, 1, 2, 3, 5, 8, 13, 21, 34, 55])
-//    })
-//  })
+
+describe(fibIndex, () => { 
+   it("takes in a number (greater  than 2) and returns an array that length containing the numbers of the Fibonacci sequence.", () => {
+         const fibLength1 = 6
+           // Expected output: [1, 1, 2, 3, 5, 8]
+         const fibLength2 = 10
+           // Expected output: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+     expect(fibIndex(fibLength1)).toEqual([1, 1, 2, 3, 5, 8])
+     expect(fibIndex(fibLength2)).toEqual([1, 1, 2, 3, 5, 8, 13, 21, 34, 55])
+   })
+ })
   
-  //GOOD FAIL! YAY! :) 
-  //ReferenceError: fibIndex is not defined
+//   //GOOD FAIL! YAY! :) 
+//   //ReferenceError: fibIndex is not defined
 
-// b) Create the function that makes the test pass.
+// // b) Create the function that makes the test pass.
 
-//PsudoCode:
-//1. create a function (fibIndex)
-//2. that takes in a input (1 paramiter = index)
-  //3.  if grater than 2 (if i >2)
-    //4. estbalish variable to hold first number (a)
-    //5. establish variable to hold second number (b)
-    //6. add numbers together (a +b) and push to a 
-    //7. repeat (index) times
-//5. else opps (pick number greater than 2)
-
-// const fibIndex = (index) => {
-//   for (i=0 ; i<index ; i++) {
-//     a= 1
-//     b=1
-//     a=(a + b) 
-//     console.log(a.repeat(i))  
-//   }
-// }
-
-// fibIndex(6)
+// //PsudoCode:
+// //1. create a function (fibIndex)
+// //2. that takes in a input (1 paramiter = index)
+//   //3.  if grater than 2 (if i >2)
+//     //4. estbalish variable to hold first number (a)
+//     //5. establish variable to hold second number (b)
+//     //6. add numbers together (a +b) and push to a 
+//     //7. repeat (index) times
+// //5. else opps (pick number greater than 2)
 
 
-// --------------------2) Create a function that takes in an object and returns an array of the numbers sorted from least to greatest.
-// Hint: Check out this resource: Object.values() https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values
+const fibIndex = (num) => {
+  let fib = [1,1]
+  for (i=2 ; i<num ; i++) {
+    console.log([...fib, (fib[i-1] + fib[i-2]) ])  
+  }
+}
 
-// a) Create a test with expect statements for each of the variables provided.
+
+
+
+// // --------------------2) Create a function that takes in an object and returns an array of the numbers sorted from least to greatest.
+// // Hint: Check out this resource: Object.values() https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values
+
+// // a) Create a test with expect statements for each of the variables provided.
 
 describe("studySorter", () => {
     it("takes in an object and returns an array of the numbers sorted from least to greatest", () => {
@@ -97,16 +94,16 @@ describe("studySorter", () => {
     })
   }) 
     
-  //GOOD FAIL! YAY! :) 
-  //ReferenceError: studySorter is not defined
+//   //GOOD FAIL! YAY! :) 
+//   //ReferenceError: studySorter is not defined
 
 
-// b) Create the function that makes the test pass.
+// // b) Create the function that makes the test pass.
 
-//PsudoCode:
-  //1. create a function (studySorter)
-  //2. iterate over function to get values (objects.values)
-  //3.sort by number from least to greatest (.sort(function(a,b){return a-b}))
+// //PsudoCode:
+//   //1. create a function (studySorter)
+//   //2. iterate over function to get values (objects.values)
+//   //3.sort by number from least to greatest (.sort(function(a,b){return a-b}))
   
 
 
@@ -115,13 +112,13 @@ describe("studySorter", () => {
     return Object.values(value).sort(function(a,b) {return a-b})
   }
 
-//Yay! It workes! 
-//Test Suites: 1 passed, 1 total
-// Tests:       1 passed, 1 total
+// //Yay! It workes! 
+// //Test Suites: 1 passed, 1 total
+// // Tests:       1 passed, 1 total
 
-// --------------------3) Create a function that takes in an array and returns an array of the accumulating sum. An empty array should return an empty array.
+// // --------------------3) Create a function that takes in an array and returns an array of the accumulating sum. An empty array should return an empty array.
 
-// a) Create a test with expect statements for each of the variables provided.
+// // a) Create a test with expect statements for each of the variables provided.
 
 describe("sumArray", () => {
   it(" takes in an array and returns an array of the accumulating sum. An empty array should return an empty array.", () => {
@@ -154,12 +151,14 @@ describe("sumArray", () => {
       //9. return temp array
 
   const sumArray = (arr) => {
-    if (arr.length === null) {
+    let tempArr= [arr[0]]
+    if (arr.length === 0) {
         return []
     } else {
-      for (i=0, i <arr.length; i++;) {
-        let tempArr= []
-        return tempArr= [...tempArr, (tempArr + arr[i])]
+      for (i=1, i <arr.length; i++;) {
+        tempArr[i] = tempArr[i-1] + arr[i]
       }
-    }
-  }
+    } return tempArr
+  } 
+
+  
